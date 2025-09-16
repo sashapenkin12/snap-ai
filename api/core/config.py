@@ -18,7 +18,7 @@ class AppSettings(BaseSettings):
 
     @property
     def DATABASE_URL(self) -> str:
-        return 'postgres+asyncpg://{username}:{password}@{host}/{name}'.format(
+        return 'postgresql+asyncpg://{username}:{password}@{host}/{name}'.format(
             username=self.DB_USER,
             password=self.DB_PASSWORD,
             host=self.DB_HOST,
