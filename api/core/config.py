@@ -24,6 +24,8 @@ class AppSettings(BaseSettings):
 
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
     REFRESH_TOKEN_EXPIRE_DAYS: int = 14
+    SECRET_KEY: str
+    ALGORITHM: str
 
     @property
     def DATABASE_URL(self) -> str:
