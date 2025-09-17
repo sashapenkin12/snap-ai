@@ -5,7 +5,7 @@ from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.ext.asyncio import AsyncSession
 from fastapi import APIRouter, Depends, HTTPException
 
-from api.dependencies import get_session
+from api.dependencies.session import get_session
 
 router = APIRouter(prefix='/health')
 
