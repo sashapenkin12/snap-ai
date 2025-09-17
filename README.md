@@ -1,6 +1,13 @@
 # snap-ai
 Web-server for calories tracker mobile app. Based on FastAPI and async SQLAlchemy frameworks. 
 
+
+## Installation
+- Copy the project:
+```bash
+git clone https://github.com/sashapenkin12/snap-ai
+```
+
 ## Launch 🚀
 - 1. Copy test values from .env.example to the .env file.
 - 2. Launch Docker Compose commands(Verify, that Docker is installed. Otherwise - download it [here](https://www.docker.com/products/docker-desktop/)):
