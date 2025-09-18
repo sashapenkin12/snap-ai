@@ -4,7 +4,7 @@ from datetime import date
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from api.models.user import Profile
-from api.tests.conftest import db_session
+# from api.tests.conftest import db_session # type: ignore
 
 @pytest.mark.asyncio
 async def test_profile(db_session: AsyncSession) -> None:

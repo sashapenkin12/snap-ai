@@ -6,7 +6,6 @@ from typing import Annotated
 from sqlalchemy.ext.asyncio import AsyncSession
 from fastapi import APIRouter, Depends
 from fastapi.security import OAuth2PasswordRequestForm
-from pydantic import BaseModel, Field, EmailStr
 
 from api.dependencies.session import get_session
 from api.dependencies.user import get_current_user
