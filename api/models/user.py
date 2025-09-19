@@ -43,9 +43,18 @@ class Profile(Base):
 
     birth_date: Mapped[date] = mapped_column(Date, nullable=False)
 
-    activity_type: Mapped[ActivityEnum] = mapped_column(Enum, default=ActivityEnum.normal, nullable=False)
+    activity_type: Mapped[ActivityEnum] = mapped_column(
+        Enum(ActivityEnum, name="activity_enum"),
+        default=ActivityEnum.normal, 
+        nullable=False,
+    )
 
     allergy: Mapped[str] = mapped_column(nullable=False)
 
-    goal: Mapped[GoalEnum] = mapped_column(Enum, default=GoalEnum.support_weight, nullable=False)
+    goal: Mapped[GoalEnum] = mapped_column(
+        Enum(GoalEnum, name="goal_enum"),
+        default=GoalEnum.support_weight, 
+        nullable=False,
+        
+    )
     desired_weight: Mapped[int] = mapped_column()
