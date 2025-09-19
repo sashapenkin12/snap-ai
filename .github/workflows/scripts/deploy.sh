@@ -3,9 +3,6 @@ set -e
 
 cd ~/app
 
-sudo apt-get update && sudo apt-get install &&
-    sud
-
 echo "Create .env from Github Secrets"
 cat > .env << EOL
 DB_USER=${DB_USER}
