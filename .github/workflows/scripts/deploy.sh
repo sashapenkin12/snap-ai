@@ -13,5 +13,5 @@ SECRET_KEY=${SECRET_KEY}
 ALGORITHM=${ALGORITHM}
 EOL
 
-docker-compose down
-docker-compose up -d --build
+docker compose down
+docker compose up -d --build
