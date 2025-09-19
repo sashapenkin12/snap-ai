@@ -25,4 +25,4 @@ RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync --frozen
 
 # Run server
-CMD ["uv", "run", "uvicorn", "api.app:app", "--workers", "3", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uv", "run", "uvicorn", "api.app:app", "--workers", "1", "--host", "0.0.0.0", "--port", "8000"]
