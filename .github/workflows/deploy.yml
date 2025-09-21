@@ -30,7 +30,12 @@ jobs:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
-          envs: DB_USER,DB_PASSWORD,DB_HOST,DB_NAME,SECRET_KEY,ALGORITHM
           script: |
+            DB_USER=$DB_USER \
+            DB_PASSWORD=$DB_PASSWORD \
+            DB_HOST=$DB_HOST \
+            DB_NAME=$DB_NAME \
+            SECRET_KEY=$SECRET_KEY \
+            ALGORITHM=$ALGORITHM \
             bash ~/app/.github/workflows/scripts/deploy.sh
       
