@@ -30,18 +30,17 @@ jobs:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
-          envs: DB_USER,DB_PASSWORD,DB_HOST,DB_NAME,SECRET_KEY,ALGORITHM
           script: |
             cd ~/app
 
             echo "Create .env from Github Secrets"
             cat > .env << EOL
-            DB_USER=${DB_USER}
-            DB_PASSWORD=${DB_PASSWORD}
-            DB_HOST=${DB_HOST}
-            DB_NAME=${DB_NAME}
-            SECRET_KEY=${SECRET_KEY}
-            ALGORITHM=${ALGORITHM}
+            DB_USER=${{ secrets.DB_USER }}
+            DB_PASSWORD=${{ secrets.DB_PASSWORD }}
+            DB_HOST=${{ secrets.DB_HOST }}
+            DB_NAME=${{ secrets.DB_NAME }}
+            SECRET_KEY=${{ secrets.SECRET_KEY }}
+            ALGORITHM=${{ secrets.ALGORITHM }}
             EOL
 
             docker compose down
