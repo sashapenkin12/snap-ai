@@ -27,6 +27,11 @@ class AppSettings(BaseSettings):
     SECRET_KEY: str
     ALGORITHM: str
 
+    OPENAI_API_KEY: str
+    
+    MEDIA_URL: str
+    MEDIA_ROOT: str
+
     @property
     def DATABASE_URL(self) -> str:
         return 'postgresql+asyncpg://{username}:{password}@{host}/{name}'.format(
