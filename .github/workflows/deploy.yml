@@ -42,6 +42,9 @@ jobs:
             DB_NAME=${{ secrets.DB_NAME }}
             SECRET_KEY=${{ secrets.SECRET_KEY }}
             ALGORITHM=${{ secrets.ALGORITHM }}
+            OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
+            MEDIA_URL=${{ secrets.MEDIA_URL }}
+            MEDIA_ROOT=${{ secrets.MEDIA_ROOT }}
             EOL
 
             docker compose down
