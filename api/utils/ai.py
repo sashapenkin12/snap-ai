@@ -1,6 +1,6 @@
 from typing import Type
-from json import dumps
 
+from orjson import dumps
 from openai import AsyncClient
 from pydantic import BaseModel
 
@@ -9,14 +9,15 @@ from api.core.config import settings
 client = AsyncClient(api_key=settings.OPENAI_API_KEY)
 
 PROMPT = """
-Parse the food image and provide the information in JSON format with the following structure:
+Parse the food image and provide the information in JSON format with the following structure.
+Return **only raw JSON**, do not wrap it in markdown or ```json blocks.
 
 {schema}
 """
 
 FALLBACK_PROMPT = """
 You are a recovery system. Convert this text into valid JSON,
-strictly following the schema below. Return only JSON, without explanations.
+strictly following the schema below. Return only raw JSON, **no code blocks** or explanations.
 
 Schema:
 {schema}
@@ -37,7 +38,7 @@ async def analyze_image_with_ai(
                     {
                         "type": "input_text", 
                         "text": PROMPT.format(
-                            schema=dumps(expected_schema.model_json_schema(), indent=2)
+                            schema=dumps(expected_schema.model_json_schema())
                         ),
                     },
                     {
@@ -62,7 +63,7 @@ async def fallback_image_analyze(
                 'content': [{
                     'type': 'input_text',
                     'text': FALLBACK_PROMPT.format(
-                        schema=dumps(expected_schema.model_json_schema(), indent=2),
+                        schema=dumps(expected_schema.model_json_schema()),
                         raw_text=raw_response,
                     ),
                 }]
