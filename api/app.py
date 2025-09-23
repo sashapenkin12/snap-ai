@@ -5,6 +5,10 @@ Attributes:
     app: FastAPI web app attribute.
 """
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.middleware.trustedhost import TrustedHostMiddleware
+from uvicorn.middleware.proxy_headers import ProxyHeadersMiddleware
+from fastapi.responses import ORJSONResponse
 
 from api.routes.health_check import router as health_router
 from api.routes.auth import router as auth_router
@@ -27,9 +31,12 @@ app = FastAPI(
     docs_url="/docs",
     redoc_url="/redoc",
     openapi_url="/openapi.json",
+    default_response_class=ORJSONResponse
 )
 app.add_event_handler('startup', init_models)
 app.include_router(health_router)
 app.include_router(auth_router)
 app.include_router(media_router)
 app.include_router(analysis_router)
+
+app.add_middleware(ProxyHeadersMiddleware, trusted_hosts="*") # type: ignore
